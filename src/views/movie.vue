@@ -1,25 +1,22 @@
 <template>
-  <section class="grid">
-    <h2>{{inTheatersList.title}}</h2>
-    <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
-      <div class="item"
-           v-for="item in inTheatersList.subjects">
-        <div class="cover">
-          <div class="wp">
-            <img class="img-show" :src="item.images.medium"/>
-          </div>
-        </div>
-        <div class="info">
-          <h3>{{item.title}}</h3>
+  <section class="grid" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
+    <h2>{{inTheaters.title}}</h2>
+    <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item"
+         v-for="item in inTheaters.subjects">
+      <div class="cover">
+        <div class="wp">
+          <img class="img-show" :src="item.images.medium"/>
         </div>
       </div>
-    </div>
+      <div class="info">
+        <h3>{{item.title}}</h3>
+      </div>
+    </router-link>
   </section>
 </template>
 
 <script>
   import Loading from '../components/loading.vue';
-  import InfiniteLoading from 'vue-infinite-loading'
   import InfiniteScroll from 'vue-infinite-scroll'
   import {mapState} from 'vuex';
   import * as types from '../store/types';
@@ -29,40 +26,25 @@
     return store.dispatch([types.IN_THEATERS], start);
   }
   export default{
-    components: {Loading, InfiniteLoading},
+    components: {Loading},
     directives: {InfiniteScroll},
     data(){
       return {
-        loading: true,
-        inTheatersList: {
-          subjects: [],
-        },
-        busy: false,
       }
     },
+    computed: mapState({
+      inTheaters: state=> state.inTheaters,
+      busy: state => state.busy
+    }),
     mounted(){
     },
     methods: {
       loadMore(){
-        this.busy = true;
-        let start = this.inTheatersList.subjects.length;
-          axios.get('/api/movie/coming_soon?start=' + start)
-                  .then(response => {
-                    this.inTheatersList.total = response.data.total;
-                    this.inTheatersList.subjects = this.inTheatersList.subjects.concat(response.data.subjects);
-                    if(start < this.inTheatersList.total){
-                      this.busy = false;
-                    }
-                  });
+        this.$store.dispatch([types.SET_INFINITE_BUSY], true);
 
-        /*fetchMovies(this.$store, start).then(()=> {
-         if (start > this.$store.state.inTheatersList.length) {
-         this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
-         }
-         else {
-         this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
-         }
-         })*/
+        let start = this.$store.state.inTheaters.subjects.length;
+        fetchMovies(this.$store, start).then(()=> {
+        })
       }
     },
   };
