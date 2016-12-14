@@ -29,19 +29,22 @@
     components: {Loading},
     directives: {InfiniteScroll},
     data(){
-      return {}
+      return {
+        type:''
+      }
     },
     computed: mapState({
       movieList: state=> state.movie.movieList,
       busy: state => state.movie.busy
     }),
     mounted(){
+      this.type = this.$route.query.type;
     },
     methods: {
       loadMore(){
         this.$store.dispatch([types.SET_INFINITE_BUSY], true);
         let start = this.$store.state.movie.movieList.subjects.length;
-        fetchMovies(this.$store, {type: API_TYPE.movie.in_theaters, start:start}).then(()=> {
+        fetchMovies(this.$store, {type: this.type, start:start}).then(()=> {
         })
       }
     },
@@ -49,21 +52,26 @@
 </script>
 <style lang="scss">
   .grid {
-    padding: 20px 0;
+    padding: 40px 0;
     margin-left: auto;
     margin-right: auto;
     max-width: 660px;
     overflow: hidden;
     box-sizing: border-box;
     h2 {
-      font-size: 24px;
+      font-size: 18px;
       font-weight: normal;
       box-sizing: border-box;
       max-width: 660px;
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 6px;
-      padding-left: 4%;
+      padding: 0 4%;
+      .more{
+        float: right;
+        font-size:12px;
+        color: #999;
+      }
     }
     .item {
       float: left;

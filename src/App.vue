@@ -10,6 +10,7 @@
   import Hello from './components/Hello';
   import Index from './views/index'
   import VuexDemo from './views/vuex-demo.vue'
+  import Movies from './views/movies.vue'
   import MovieList from './views/movie-list.vue'
   import MovieDetail from './views/movie-detail.vue'
 
@@ -20,6 +21,7 @@
       Hello,
       Index,
       VuexDemo,
+      Movies,
       MovieList,
       MovieDetail
     },

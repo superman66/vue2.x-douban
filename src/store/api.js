@@ -9,7 +9,7 @@ const HOST = '/api/';
 export const API_TYPE = {
   movie:{
     in_theaters: 'in_theaters',
-    coming_soon: 'coming_soon'
+    coming_soon: 'coming_soon',
   }
 };
 
@@ -29,8 +29,8 @@ export function fetchItemByType(type) {
 }
 
 
-export function fetchMoviesByType(type, start=0) {
-  return fetchItemByType(`movie/${type}?start=${start}`)
+export function fetchMoviesByType(type, start=0, count=20) {
+  return fetchItemByType(`movie/${type}?start=${start}&count=${count}`)
 }
 
 export function fetchMovieById(id) {

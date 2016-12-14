@@ -20,9 +20,14 @@ export default [
     name: 'vuex-demo'
   },
   {
-    path: '/movie',
+    path: '/movies',
+    component: App.components.Movies,
+    name: 'movies'
+  },
+  {
+    path: '/movie-list',
     component: App.components.MovieList,
-    name: 'movie'
+    name: 'movie-list'
   },
   {
     path: '/movie/:id',
