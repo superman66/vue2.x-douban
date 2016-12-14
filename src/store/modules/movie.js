@@ -36,6 +36,18 @@ const actions = {
 
   [types.SET_INFINITE_BUSY](context, data){
     context.commit([types.SET_INFINITE_BUSY], data);
+  },
+
+  [types.CLEAN_MOVIE](context){
+    context.commit(types.CLEAN_MOVIE);
+  },
+
+  [types.CLEAN_MOVIES](context){
+    context.commit([types.CLEAN_MOVIES])
+  },
+
+  [types.CLEAN_MOVIE_LIST](context){
+    context.commit([types.CLEAN_MOVIE_LIST])
   }
 };
 
@@ -59,6 +71,18 @@ const mutations = {
 
   [types.SET_INFINITE_BUSY](state, data){
     state.busy = data;
+  },
+
+  [types.CLEAN_MOVIE](state){
+    state.movie = {};
+  },
+
+  [types.CLEAN_MOVIES](state){
+    state.movies = [];
+  },
+
+  [types.CLEAN_MOVIE_LIST](state){
+    state.movieList = {};
   }
 };
 

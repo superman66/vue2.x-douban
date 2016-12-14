@@ -6,8 +6,6 @@
           <ul>
             <li><a href="#/movies" style="color: #2384E8;">电影</a></li>
             <li><a href="#/book" style="color: #9F7860;">图书</a></li>
-            <li><a href="#/status" style="color: #E4A813;">广播</a></li>
-            <li><a href="#/group" style="color: #2AB8CC;">小组</a></li>
           </ul>
           <span class="search"></span></nav>
       </div>

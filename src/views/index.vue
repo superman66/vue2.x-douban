@@ -58,7 +58,7 @@
 </style>
 <script>
   import {mapState} from 'vuex';
-  import loading from '../components/loading.vue'
+  import loading from '../components/Spinner.vue'
   export default{
     data(){
       return {

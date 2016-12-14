@@ -1,7 +1,7 @@
 <template>
   <div class="grid">
-    <div class="card">
-      <div class="title">{{movie.title }}&nbsp;{{movie.original_title}}</div>
+    <div class="detail-card" v-if="movie.title">
+      <div class="title">{{movie.title }}&nbsp;{{getOriginalTitle}}</div>
       <div>
         <img :src="movie.images.large" style="width:100%">
       </div>
@@ -43,6 +43,9 @@
       }, '');
         return movie.countries.join(' / ') + ' / '+movie.genres.join(' / ') + ' / '+movie.directors[0].name +'(导演) / ' + cast;
       },
+      getOriginalTitle(){
+        return new RegExp(/([A-Za-z])/g).test(this.$store.state.movie.movie.original_title)? this.$store.state.movie.movie.original_title : '';
+      },
       ...mapState({
         movie: state => state.movie.movie
       })
@@ -50,12 +53,14 @@
     mounted(){
       this.id = this.$route.params.id;
       this.$store.dispatch([types.FETCH_MOVIE_BY_ID], this.id);
+    },
+    destroyed(){
+      this.$store.dispatch([types.CLEAN_MOVIE])
     }
   };
 </script>
 <style scoped lang="scss">
   .grid {
-    padding: 20px 0;
     margin-left: auto;
     margin-right: auto;
     max-width: 660px;
@@ -63,12 +68,14 @@
     box-sizing: border-box;
   }
 
-  .card {
-    margin: 0 18px;
+  .detail-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 0 15px;
+    margin: 10px 5px;
     -webkit-text-size-adjust: 100%;
     .title {
-      margin: 30px 0 5px;
-      font-size: 24px;
+      font-size: 16px;
       line-height: 32px;
       word-break: break-all;
     }
