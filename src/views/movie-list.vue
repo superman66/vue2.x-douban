@@ -1,8 +1,8 @@
 <template>
   <section class="grid" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
-    <h2>{{inTheaters.title}}</h2>
+    <h2>{{movieList.title}}</h2>
     <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item"
-         v-for="item in inTheaters.subjects">
+                 v-for="item in movieList.subjects">
       <div class="cover">
         <div class="wp">
           <img class="img-show" :src="item.images.medium"/>
@@ -20,36 +20,34 @@
   import InfiniteScroll from 'vue-infinite-scroll'
   import {mapState} from 'vuex';
   import * as types from '../store/types';
-  import axios from 'axios'
+  import {API_TYPE} from '../store/api';
 
-  function fetchMovies(store, start) {
-    return store.dispatch([types.IN_THEATERS], start);
+  function fetchMovies(store, payload) {
+    return store.dispatch([types.FETCH_MOVIE_LIST], payload);
   }
   export default{
     components: {Loading},
     directives: {InfiniteScroll},
     data(){
-      return {
-      }
+      return {}
     },
     computed: mapState({
-      inTheaters: state=> state.inTheaters,
-      busy: state => state.busy
+      movieList: state=> state.movie.movieList,
+      busy: state => state.movie.busy
     }),
     mounted(){
     },
     methods: {
       loadMore(){
         this.$store.dispatch([types.SET_INFINITE_BUSY], true);
-
-        let start = this.$store.state.inTheaters.subjects.length;
-        fetchMovies(this.$store, start).then(()=> {
+        let start = this.$store.state.movie.movieList.subjects.length;
+        fetchMovies(this.$store, {type: API_TYPE.movie.in_theaters, start:start}).then(()=> {
         })
       }
     },
   };
 </script>
-<style scoped lang="scss">
+<style lang="scss">
   .grid {
     padding: 20px 0;
     margin-left: auto;

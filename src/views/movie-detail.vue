@@ -32,19 +32,19 @@
   export default{
     data(){
       return {
-        id: '',
+        id: ''
       }
     },
     computed: {
       getMeta(){
-        var movie = this.$store.state.movie;
+        var movie = this.$store.state.movie.movie;
         var cast = movie.casts.reduce((name,value)=>{
-          return name ? name +' / '+ value.name : value.name;
-        }, '');
+                  return name ? name +' / '+ value.name : value.name;
+      }, '');
         return movie.countries.join(' / ') + ' / '+movie.genres.join(' / ') + ' / '+movie.directors[0].name +'(导演) / ' + cast;
       },
       ...mapState({
-        movie: state => state.movie
+        movie: state => state.movie.movie
       })
     },
     mounted(){

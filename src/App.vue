@@ -10,7 +10,7 @@
   import Hello from './components/Hello';
   import Index from './views/index'
   import VuexDemo from './views/vuex-demo.vue'
-  import Movie from './views/movie.vue'
+  import MovieList from './views/movie-list.vue'
   import MovieDetail from './views/movie-detail.vue'
 
   export default {
@@ -20,7 +20,7 @@
       Hello,
       Index,
       VuexDemo,
-      Movie,
+      MovieList,
       MovieDetail
     },
   };

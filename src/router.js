@@ -21,7 +21,7 @@ export default [
   },
   {
     path: '/movie',
-    component: App.components.Movie,
+    component: App.components.MovieList,
     name: 'movie'
   },
   {

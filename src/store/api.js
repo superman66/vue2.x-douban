@@ -6,7 +6,12 @@ import axios from 'axios';
 // 使用代理
 const HOST = '/api/';
 
-
+export const API_TYPE = {
+  movie:{
+    in_theaters: 'in_theaters',
+    coming_soon: 'coming_soon'
+  }
+};
 
 export function fetch(url) {
   console.log(HOST + url);
