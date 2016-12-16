@@ -6,13 +6,7 @@ import App from  './App.vue'
 export default [
   {
     path: '/',
-    component: App.components.Hello,
-    name: 'hello'
-  },
-  {
-    path: '/index',
-    component: App.components.Index,
-    name: 'index'
+    component: App.components.Movies,
   },
   {
     path: '/vuex-demo',
@@ -33,6 +27,11 @@ export default [
     path: '/movie/:id',
     component: App.components.MovieDetail,
     name: 'movie-detail'
+  },
+  {
+    path: '/search',
+    component: App.components.SearchList,
+    name: 'search'
   }
 ]
 

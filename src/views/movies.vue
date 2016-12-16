@@ -1,58 +1,91 @@
 <template>
-  <section class="grid">
-    <div v-for="movie in movies">
-      <h2>{{movie.title}}
-        <router-link tag="span" :to="{name: 'movie-list', query: {type: movie.type}}" class="more">更多></router-link>
-      </h2>
-      <div class="card">
-        <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item" v-for="item in movie.subjects">
-          <div class="cover">
-            <div class="wp">
-              <img class="img-show" :src="item.images.medium"/>
+  <div>
+    <search-movie></search-movie>
+    <section class="grid has-search-bar">
+      <div v-if="inTheater.title">
+        <h2>{{inTheater.title}}
+          <router-link tag="span" :to="{name: 'movie-list', query: {type: inTheater.type}}" class="more">更多>
+          </router-link>
+        </h2>
+        <div class="card">
+          <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item"
+                       v-for="item in inTheater.subjects">
+            <div class="cover">
+              <div class="wp">
+                <img class="img-show" :src="item.images.medium"/>
+              </div>
             </div>
-          </div>
-          <div class="info">
-            <h3>{{item.title}}</h3>
-          </div>
-        </router-link>
+            <div class="info">
+              <h3>{{item.title}}</h3>
+            </div>
+          </router-link>
+        </div>
       </div>
-    </div>
-    <spinner :show="loading"></spinner>
-  </section>
+      <div v-if="comingSoon.title">
+        <h2>{{comingSoon.title}}
+          <router-link tag="span" :to="{name: 'movie-list', query: {type: comingSoon.type}}" class="more">更多>
+          </router-link>
+        </h2>
+        <div class="card">
+          <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item"
+                       v-for="item in comingSoon.subjects">
+            <div class="cover">
+              <div class="wp">
+                <img class="img-show" :src="item.images.medium"/>
+              </div>
+            </div>
+            <div class="info">
+              <h3>{{item.title}}</h3>
+            </div>
+          </router-link>
+        </div>
+      </div>
+      <spinner :show="loading"></spinner>
+    </section>
+  </div>
 </template>
 
 <script>
   import Spinner  from '../components/Spinner.vue'
   import {mapState} from 'vuex';
   import * as types from '../store/types';
-  import {API_TYPE} from '../store/api';
+  import {API_TYPE, fetchMoviesByType} from '../store/api';
+  import SearchMovie from '../components/search-movie.vue'
 
-  function fetchMovies(store, payload) {
-    return store.dispatch([types.FETCH_MOVIES], payload);
-  }
   export default{
-    components: {Spinner},
+    components: {Spinner, SearchMovie},
     data(){
       return {
         loading: true,
+        inTheater: {
+          type: ''
+        },
+        comingSoon: {
+          type: ''
+        }
       }
     },
-    computed: mapState({
-      movies: state=> state.movie.movies,
-    }),
     mounted(){
-      fetchMovies(this.$store, {type: API_TYPE.movie.in_theaters, start: 0, count: 9})
-              .then(()=> {
+      var start = 0, count = 9;
+      fetchMoviesByType(API_TYPE.movie.in_theaters, start, count)
+              .then((data) => {
+                this.inTheater = data;
+                this.inTheater.type = API_TYPE.movie.in_theaters;
                 this.loading = false;
-                console.log('fetch done');
-                fetchMovies(this.$store, {type: API_TYPE.movie.coming_soon, start: 0, count: 9})
-              })
+              });
+      fetchMoviesByType(API_TYPE.movie.coming_soon, start, count)
+              .then((data) => {
+                this.comingSoon = data;
+                this.comingSoon.type = API_TYPE.movie.coming_soon;
+                this.loading = false;
+              });
+
     },
     updated(){
-      console.log('update');
     },
     destroyed(){
-      this.$store.dispatch([types.CLEAN_MOVIES])
     }
   };
 </script>
+<style lang="scss">
+</style>

@@ -1,0 +1,97 @@
+.grid {
+  padding: 40px 15px 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 660px;
+  overflow: hidden;
+  box-sizing: border-box;
+  &.has-search-bar{
+    padding: 0 15px;
+  }
+  h2 {
+    font-size: 14px;
+    font-weight: normal;
+    box-sizing: border-box;
+    max-width: 660px;
+    margin: 15px auto;
+    padding: 0 4%;
+    color: #8e8e8e;
+    .more {
+      float: right;
+      font-size: 12px;
+      color: #999;
+    }
+  }
+  .card {
+    clear: both;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px 0 0;
+  }
+  .item {
+    float: left;
+    box-sizing: border-box;
+    width: 33.33333%;
+    padding-left: 4%;
+    padding-right: 4%;
+    margin-bottom: 0px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #9b9b9b;
+    .cover {
+      min-height: 87px;
+      overflow: hidden;
+      position: relative;
+      .img-show {
+        width: 100%;
+      }
+    }
+    .wp {
+      position: relative;
+      &:before {
+        content: "";
+        display: block;
+        padding-top: 143%;
+      }
+    }
+    .info {
+      height: 45px;
+      overflow: hidden;
+      h3 {
+        font-size: 13px;
+        font-weight: normal;
+        padding: 5px 0 0;
+        color: #494949;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        margin: 0;
+      }
+    }
+    .rank {
+      height: 16px;
+      font-size: 12px;
+      padding-top: 3px;
+      text-align: center;
+      .rating-stars {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    img {
+      display: block;
+      position: absolute;
+      left: -100%;
+      right: -100%;
+      top: -100%;
+      bottom: -100%;
+      margin: auto;
+      min-height: 100%;
+      min-width: 100%;
+    }
+  }
+}

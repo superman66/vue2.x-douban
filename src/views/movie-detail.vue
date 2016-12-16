@@ -1,5 +1,5 @@
 <template>
-  <div class="grid">
+  <div class="">
     <div class="detail-card" v-if="movie.title">
       <div class="title">{{movie.title }}&nbsp;{{getOriginalTitle}}</div>
       <div>
@@ -23,56 +23,49 @@
         </div>
       </section>
     </div>
+    <spinner :show="loading"></spinner>
   </div>
 </template>
 <script>
-  import {mapState} from 'vuex';
+  import Spinner  from '../components/Spinner.vue'
   import * as types from '../store/types';
+  import {fetchMovieById} from '../store/api';
 
   export default{
+    components: {Spinner},
     data(){
       return {
-        id: ''
+        loading: true,
+        id: '',
+        movie: {}
       }
     },
     computed: {
       getMeta(){
-        var movie = this.$store.state.movie.movie;
-        var cast = movie.casts.reduce((name,value)=>{
+        var cast = this.movie.casts.reduce((name,value)=>{
                   return name ? name +' / '+ value.name : value.name;
       }, '');
-        return movie.countries.join(' / ') + ' / '+movie.genres.join(' / ') + ' / '+movie.directors[0].name +'(导演) / ' + cast;
+        return this.movie.countries.join(' / ') + ' / '+this.movie.genres.join(' / ') + ' / '+this.movie.directors[0].name +'(导演) / ' + cast;
       },
       getOriginalTitle(){
-        return new RegExp(/([A-Za-z])/g).test(this.$store.state.movie.movie.original_title)? this.$store.state.movie.movie.original_title : '';
+        return new RegExp(/([A-Za-z])/g).test(this.movie.original_title)? this.movie.original_title : '';
       },
-      ...mapState({
-        movie: state => state.movie.movie
-      })
     },
     mounted(){
       this.id = this.$route.params.id;
-      this.$store.dispatch([types.FETCH_MOVIE_BY_ID], this.id);
-    },
-    destroyed(){
-      this.$store.dispatch([types.CLEAN_MOVIE])
+      fetchMovieById(this.id)
+              .then(data =>{
+                this.movie = data;
+                this.loading = false;
+              })
     }
   };
 </script>
 <style scoped lang="scss">
-  .grid {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 660px;
-    overflow: hidden;
-    box-sizing: border-box;
-  }
-
   .detail-card {
     background: #fff;
     border-radius: 10px;
-    padding: 0 15px;
-    margin: 10px 5px;
+    padding: 50px 15px;;
     -webkit-text-size-adjust: 100%;
     .title {
       font-size: 16px;
