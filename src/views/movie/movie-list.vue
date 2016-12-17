@@ -19,10 +19,10 @@
 </template>
 
 <script>
-  import Spinner from '../components/Spinner.vue';
+  import Spinner from '../../components/Spinner.vue';
   import InfiniteScroll from 'vue-infinite-scroll'
-  import * as types from '../store/types';
-  import {fetchSearchMovies} from '../store/api';
+  import * as types from '../../store/types';
+  import {API_TYPE, fetchMoviesByType} from '../../store/api';
 
   export default{
     components: {Spinner},
@@ -30,7 +30,7 @@
     data(){
       return {
         loading: true,
-        query: '',
+        type: '',
         movieList: {
           subjects: []
         },
@@ -39,13 +39,13 @@
     },
     computed: {},
     mounted(){
-      this.query = this.$route.query.query;
+      this.type = this.$route.query.type;
     },
     methods: {
       loadMore(){
         let start = this.movieList.subjects.length;
         this.busy = true;
-        fetchSearchMovies(this.query)
+        fetchMoviesByType(this.type, start)
                 .then(data => {
                   this.movieList.title = data.title;
                   this.movieList.total = data.total;
@@ -61,6 +61,3 @@
     }
   };
 </script>
-<style lang="scss">
-
-</style>

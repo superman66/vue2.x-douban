@@ -27,9 +27,9 @@
   </div>
 </template>
 <script>
-  import Spinner  from '../components/Spinner.vue'
-  import * as types from '../store/types';
-  import {fetchMovieById} from '../store/api';
+  import Spinner  from '../../components/Spinner.vue'
+  import * as types from '../../store/types';
+  import {fetchMovieById} from '../../store/api';
 
   export default{
     components: {Spinner},
@@ -65,7 +65,7 @@
   .detail-card {
     background: #fff;
     border-radius: 10px;
-    padding: 50px 15px;;
+    padding: 10px 15px;;
     -webkit-text-size-adjust: 100%;
     .title {
       font-size: 16px;

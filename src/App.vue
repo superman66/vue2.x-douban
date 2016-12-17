@@ -10,10 +10,11 @@
   import Hello from './components/Hello';
   import Index from './views/index'
   import VuexDemo from './views/vuex-demo.vue'
-  import Movies from './views/movies.vue'
-  import MovieList from './views/movie-list.vue'
-  import MovieDetail from './views/movie-detail.vue'
-  import SearchList from './views/search-list.vue'
+  import Movies from './views/movie/movies.vue'
+  import MovieList from './views/movie/movie-list.vue'
+  import MovieDetail from './views/movie/movie-detail.vue'
+  import SearchList from './views/movie/search-list.vue'
+  import SearchBook from  './views/book/search.vue'
 
   export default {
     name: 'app',
@@ -25,7 +26,8 @@
       Movies,
       MovieList,
       MovieDetail,
-      SearchList
+      SearchList,
+      SearchBook
     },
   };
 </script>

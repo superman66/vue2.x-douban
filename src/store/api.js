@@ -39,5 +39,6 @@ export function fetchMovieById(id) {
 
 export function fetchSearchMovies(query) {
   let url = encodeURI('/movie/search?q=' + query);
+  console.log(url);
   return fetch(url);
 }

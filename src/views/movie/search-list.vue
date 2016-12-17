@@ -1,5 +1,5 @@
 <template>
-  <section class="grid" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10" >
+  <section class="grid has-search-bar" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10" >
     <h2>{{movieList.title}}</h2>
     <div class="card" v-if="movieList.subjects.length > 0">
       <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item"
@@ -19,10 +19,10 @@
 </template>
 
 <script>
-  import Spinner from '../components/Spinner.vue';
+  import Spinner from '../../components/Spinner.vue';
   import InfiniteScroll from 'vue-infinite-scroll'
-  import * as types from '../store/types';
-  import {API_TYPE, fetchMoviesByType} from '../store/api';
+  import * as types from '../../store/types';
+  import {fetchSearchMovies} from '../../store/api';
 
   export default{
     components: {Spinner},
@@ -30,7 +30,7 @@
     data(){
       return {
         loading: true,
-        type: '',
+        query: '',
         movieList: {
           subjects: []
         },
@@ -39,13 +39,22 @@
     },
     computed: {},
     mounted(){
-      this.type = this.$route.query.type;
+      this.query = this.$route.query.query;
+    },
+    watch: {
+      '$route': 'loadAgain'
     },
     methods: {
+      loadAgain(){
+        this.movieList.subjects = [];
+        this.busy = false;
+        this.query = this.$route.query.query;
+        this.loadMore();
+      },
       loadMore(){
         let start = this.movieList.subjects.length;
         this.busy = true;
-        fetchMoviesByType(this.type, start)
+        fetchSearchMovies(this.query)
                 .then(data => {
                   this.movieList.title = data.title;
                   this.movieList.total = data.total;
@@ -61,3 +70,6 @@
     }
   };
 </script>
+<style lang="scss">
+
+</style>

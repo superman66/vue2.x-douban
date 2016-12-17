@@ -7,6 +7,7 @@ export default [
   {
     path: '/',
     component: App.components.Movies,
+    name: 'index'
   },
   {
     path: '/vuex-demo',
@@ -19,19 +20,24 @@ export default [
     name: 'movies'
   },
   {
-    path: '/movie-list',
+    path: '/movie/list',
     component: App.components.MovieList,
     name: 'movie-list'
   },
   {
-    path: '/movie/:id',
+    path: '/movie/subject/:id',
     component: App.components.MovieDetail,
     name: 'movie-detail'
   },
   {
-    path: '/search',
+    path: '/movie/search',
     component: App.components.SearchList,
-    name: 'search'
+    name: 'movie-search'
+  },
+  {
+    path: '/book/search',
+    component: App.components.SearchBook,
+    name: 'book-search'
   }
 ]
 

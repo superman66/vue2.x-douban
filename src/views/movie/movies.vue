@@ -1,6 +1,5 @@
 <template>
   <div>
-    <search-movie></search-movie>
     <section class="grid has-search-bar">
       <div v-if="inTheater.title">
         <h2>{{inTheater.title}}
@@ -46,14 +45,13 @@
 </template>
 
 <script>
-  import Spinner  from '../components/Spinner.vue'
+  import Spinner  from '../../components/Spinner.vue'
   import {mapState} from 'vuex';
-  import * as types from '../store/types';
-  import {API_TYPE, fetchMoviesByType} from '../store/api';
-  import SearchMovie from '../components/search-movie.vue'
+  import * as types from '../../store/types';
+  import {API_TYPE, fetchMoviesByType} from '../../store/api';
 
   export default{
-    components: {Spinner, SearchMovie},
+    components: {Spinner},
     data(){
       return {
         loading: true,

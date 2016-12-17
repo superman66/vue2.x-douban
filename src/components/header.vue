@@ -5,11 +5,16 @@
         <nav>
           <ul>
             <li><a href="#/movies" style="color: #2384E8;">电影</a></li>
-            <li><a href="#/book" style="color: #9F7860;">图书</a></li>
+            <!--<li><a href="#/book/search" style="color: #9F7860;">图书</a></li>-->
           </ul>
           <span class="search"></span></nav>
       </div>
     </header>
+    <div class="search">
+      <input type="text" class="search-input" v-model.trim="query" @keyup.enter="search()" name="search"
+             placeholder="请输入搜索内容"/>
+      <img src="../assets/search-btn.png" class="search-btn" @click="search()"/>
+    </div>
   </div>
   >
 </template>
@@ -17,11 +22,47 @@
   export default{
     data(){
       return {
+        query: '',
+        placeholder: '',
+        path: 'search-movie'
       }
     },
+    mounted(){
+      if (this.$route.path === 'index' || this.$route.path.indexOf('movie')) {
+        this.path = '/movie/search';
+      }
+      else if (this.$route.path.indexOf('book')) {
+        this.path = '/book/search'
+      }
+    },
+    methods: {
+      search(){
+        this.$router.push({path: this.path, query: {query: this.query}});
+        this.query = '';
+      }
+    }
   };
 </script>
 <style scoped lang="scss">
+  .search {
+    background: #fff;
+    margin-top: 47px;
+    position: relative;
+    .search-input {
+      -webkit-appearance: none;
+      border: 0;
+      outline: 0;
+      background: #f5f5f5;
+      padding: 10px 5px;
+      width: 100%;
+    }
+    .search-btn {
+      width: 20px;
+      position: absolute;
+      right: 5px;
+      top: 9px;
+    }
+  }
 
   .TalionNav {
     position: fixed;
