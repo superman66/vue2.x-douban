@@ -54,7 +54,7 @@
       loadMore(){
         let start = this.movieList.subjects.length;
         this.busy = true;
-        fetchSearchMovies(this.query)
+        fetchSearchMovies(this.query, start)
                 .then(data => {
                   this.movieList.title = data.title;
                   this.movieList.total = data.total;

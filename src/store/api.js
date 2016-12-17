@@ -14,7 +14,6 @@ export const API_TYPE = {
 };
 
 export function fetch(url) {
-  console.log(HOST + url);
 
   return new Promise((resolve, reject)=> {
     axios.get(HOST + url)
@@ -37,8 +36,7 @@ export function fetchMovieById(id) {
   return fetch(`movie/subject/${id}`);
 }
 
-export function fetchSearchMovies(query) {
-  let url = encodeURI('/movie/search?q=' + query);
-  console.log(url);
+export function fetchSearchMovies(query, start=0) {
+  let url = encodeURI(`/movie/search?q=${query}&start=${start}`);
   return fetch(url);
 }

@@ -1,5 +1,5 @@
 <template>
-  <section class="grid" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10" >
+  <section class="grid has-search-bar" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10" >
     <h2>{{movieList.title}}</h2>
     <div class="card" v-if="movieList.subjects.length > 0">
       <router-link :to="{name: 'movie-detail', params: {id: item.id}}" class="item"
