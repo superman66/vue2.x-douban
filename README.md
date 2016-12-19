@@ -1,6 +1,8 @@
 # 运行项目
 clone项目到本地，进入项目文件夹，安装依赖
 ```javascript
+git clone https://github.com/superman66/vue2.x-douban.git
+cd vue2.x-douban
 npm install
 ```
 然后运行
@@ -102,3 +104,6 @@ dev: {
 ```
 在`proxyTable`这个属性中，配置target属性为我们要代理的目标地址。这里我们写成`http://api.douban.com/v2`，这样我们就可以在应用中调用`/api/movie/in_theaters`来访问`http://api.douban.com/v2/movie/in_theaters`，从而解决跨域的问题。
 >关于vue-cli更多关于跨域的设置可以看[官网文档](http://vuejs-templates.github.io/webpack/)
+
+# 关于vuex
+如果你想了解vuex的用法，可以切换到`vuex`分支，在该分支下，所有的state都采用vuex来管理。
