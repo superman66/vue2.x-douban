@@ -10,7 +10,7 @@ npm install
 npm run dev
 ```
 最后打开浏览器，输入`localhost:8880`即可访问。效果图如下：
-![text](../static/vue-douban-shrink.gif)
+![text](../master/static/vue-douban-shrink.gif)
 # 路由
 应用包括下面4个路由
 * `/movies` 首页，包含正在上映榜单和即将上映榜单的电影信息，首页只显示各个榜单的前8条数据；
