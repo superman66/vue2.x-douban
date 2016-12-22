@@ -10,6 +10,7 @@ npm install
 npm run dev
 ```
 最后打开浏览器，输入`localhost:8880`即可访问。效果图如下：
+
 ![text](../master/static/vue-douban-shrink.gif)
 # 路由
 应用包括下面4个路由
