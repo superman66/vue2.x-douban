@@ -7,7 +7,6 @@ import routes from './router';
 import store from './store/store'
 
 Vue.use(VueRouter);
-Vue.use(axios);
 
 const router = new VueRouter({
   routes

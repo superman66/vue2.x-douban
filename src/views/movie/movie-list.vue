@@ -14,18 +14,20 @@
         </div>
       </router-link>
     </div>
+    <p v-if="busy" class="text-center">loading....</p>
     <spinner :show="loading"></spinner>
   </section>
 </template>
 
 <script>
   import Spinner from '../../components/Spinner.vue';
+  import ScrollSpinner from '../../components/ScrollSpinner.vue';
   import InfiniteScroll from 'vue-infinite-scroll'
   import * as types from '../../store/types';
   import {API_TYPE, fetchMoviesByType} from '../../store/api';
 
   export default{
-    components: {Spinner},
+    components: {Spinner, ScrollSpinner},
     directives: {InfiniteScroll},
     data(){
       return {
