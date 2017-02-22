@@ -106,5 +106,10 @@ dev: {
 在`proxyTable`这个属性中，配置target属性为我们要代理的目标地址。这里我们写成`http://api.douban.com/v2`，这样我们就可以在应用中调用`/api/movie/in_theaters`来访问`http://api.douban.com/v2/movie/in_theaters`，从而解决跨域的问题。
 >关于vue-cli更多关于跨域的设置可以看[官网文档](http://vuejs-templates.github.io/webpack/)
 
+**说明**
+<br>
+关于有人在问，项目执行`npm run build`打包之后，豆瓣 API 代理配置不起作用，无法访问豆瓣API的问题。
+上述的代理配置只能在开发模式下使用，是webpack-dev-server提供的`http-proxy-middleware`。
+正式打包后如要访问豆瓣 API，需要自行搭建后端，转发 API，解决跨域问题。
 # 关于vuex
 如果你想了解vuex的用法，可以切换到`vuex`分支，在该分支下，所有的state都采用vuex来管理。

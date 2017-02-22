@@ -14,7 +14,7 @@
         </div>
       </router-link>
     </div>
-    <p v-if="busy" class="text-center">loading....</p>
+    <p v-if="isScroll" class="text-center">loading....</p>
     <spinner :show="loading"></spinner>
   </section>
 </template>
@@ -36,7 +36,8 @@
         movieList: {
           subjects: []
         },
-        busy: false
+        busy: false,
+        isScroll: false,
       }
     },
     computed: {},
@@ -47,6 +48,7 @@
       loadMore(){
         let start = this.movieList.subjects.length;
         this.busy = true;
+        this.isScroll = true;
         fetchMoviesByType(this.type, start)
                 .then(data => {
                   this.movieList.title = data.title;
@@ -56,6 +58,7 @@
                     this.busy = false;
                   }
                   this.loading = false;
+                  this.isScroll = false;
                 })
       }
     },
