@@ -33,11 +33,6 @@ export default [
     path: '/movie/search',
     component: App.components.SearchList,
     name: 'movie-search'
-  },
-  {
-    path: '/book/search',
-    component: App.components.SearchBook,
-    name: 'book-search'
   }
 ]
 

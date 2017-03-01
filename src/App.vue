@@ -14,7 +14,6 @@
   import MovieList from './views/movie/movie-list.vue'
   import MovieDetail from './views/movie/movie-detail.vue'
   import SearchList from './views/movie/search-list.vue'
-  import SearchBook from  './views/book/search.vue'
 
   export default {
     name: 'app',
@@ -27,7 +26,6 @@
       MovieList,
       MovieDetail,
       SearchList,
-      SearchBook
     },
   };
 </script>
