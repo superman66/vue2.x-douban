@@ -25,7 +25,7 @@
   import {API_TYPE} from '../store/api';
 
   function fetchMovies(store, payload) {
-    return store.dispatch([types.FETCH_MOVIE_LIST], payload);
+    return store.dispatch(types.FETCH_MOVIE_LIST, payload);
   }
   export default{
     components: {Loading},
@@ -44,14 +44,14 @@
     },
     methods: {
       loadMore(){
-        this.$store.dispatch([types.SET_INFINITE_BUSY], true);
+        this.$store.dispatch(types.SET_INFINITE_BUSY, true);
         let start = this.$store.state.movie.movieList.subjects.length;
         fetchMovies(this.$store, {type: this.type, start:start}).then(()=> {
         })
       }
     },
     destroyed(){
-      this.$store.dispatch([types.CLEAN_MOVIE])
+      this.$store.dispatch(types.CLEAN_MOVIE)
     }
   };
 </script>

@@ -28,7 +28,7 @@
   import {API_TYPE} from '../store/api';
 
   function fetchMovies(store, payload) {
-    return store.dispatch([types.FETCH_MOVIES], payload);
+    return store.dispatch(types.FETCH_MOVIES, payload);
   }
   export default{
     components: {Spinner},
@@ -52,7 +52,7 @@
       console.log('update');
     },
     destroyed(){
-      this.$store.dispatch([types.CLEAN_MOVIES])
+      this.$store.dispatch(types.CLEAN_MOVIES)
     }
   };
 </script>

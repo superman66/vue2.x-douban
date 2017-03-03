@@ -20,22 +20,22 @@ const actions = {
     fetchMoviesByType(payload.type, payload.start, payload.count)
         .then(data=>{
           data.type = payload.type;
-          return context.commit([types.FETCH_MOVIES], data)
+          return context.commit(types.FETCH_MOVIES, data)
         });
   },
 
   [types.FETCH_MOVIE_LIST](context,payload){
     fetchMoviesByType(payload.type, payload.start)
-        .then(data=>context.commit([types.FETCH_MOVIE_LIST], data));
+        .then(data=>context.commit(types.FETCH_MOVIE_LIST, data));
   },
 
   [types.FETCH_MOVIE_BY_ID](context, id){
     fetchMovieById(id)
-        .then(data => context.commit([types.FETCH_MOVIE_BY_ID], data));
+        .then(data => context.commit(types.FETCH_MOVIE_BY_ID, data));
   },
 
   [types.SET_INFINITE_BUSY](context, data){
-    context.commit([types.SET_INFINITE_BUSY], data);
+    context.commit(types.SET_INFINITE_BUSY, data);
   },
 
   [types.CLEAN_MOVIE](context){
@@ -43,11 +43,11 @@ const actions = {
   },
 
   [types.CLEAN_MOVIES](context){
-    context.commit([types.CLEAN_MOVIES])
+    context.commit(types.CLEAN_MOVIES)
   },
 
   [types.CLEAN_MOVIE_LIST](context){
-    context.commit([types.CLEAN_MOVIE_LIST])
+    context.commit(types.CLEAN_MOVIE_LIST)
   }
 };
 
