@@ -1,4 +1,4 @@
-# 运行项目
+﻿# 运行项目
 clone项目到本地，进入项目文件夹，安装依赖
 ```javascript
 git clone https://github.com/superman66/vue2.x-douban.git
@@ -113,3 +113,5 @@ dev: {
 正式打包后如要访问豆瓣 API，需要自行搭建后端，转发 API，解决跨域问题。
 # 关于vuex
 如果你想了解vuex的用法，可以切换到`vuex`分支，在该分支下，所有的state都采用vuex来管理。
+
+2017.3.5 梨很好吃
