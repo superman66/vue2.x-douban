@@ -15,8 +15,9 @@
 │   └── prod.env.js
 ├── git.sh
 ├── index.html
+├── node-proxy
+│   └── index.js
 ├── npm-debug.log
-├── open
 ├── package.json
 ├── src
 │   ├── App.vue
@@ -46,6 +47,7 @@
 │       │   └── search-list.vue
 │       └── vuex-demo.vue
 ├── static
+│   └── vue-douban-shrink.gif
 └── tree.md
 
-10 directories, 38 files
+11 directories, 39 files
