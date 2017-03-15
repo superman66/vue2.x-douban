@@ -1,3 +1,6 @@
+# ChANGE LOG
+* 新增 Node.js 服务转发API请求-2017-3-15
+
 # 运行项目
 clone项目到本地，进入项目文件夹，安装依赖
 ```javascript
@@ -5,10 +8,19 @@ git clone https://github.com/superman66/vue2.x-douban.git
 cd vue2.x-douban
 npm install
 ```
-然后运行
+然后运行项目
 ```javascript
 npm run dev
 ```
+接着运行node 转发请求服务
+```javascript
+cd node-proxy
+node index.js
+
+//启动成功后，将看到输出
+// HTTP Server is running in http://127.0.0.1:8081
+```
+
 最后打开浏览器，输入`localhost:8880`即可访问。效果图如下：
 
 ![text](../master/static/vue-douban-shrink.gif)
@@ -38,6 +50,8 @@ npm run dev
 │   └── prod.env.js
 ├── git.sh
 ├── index.html
+├── node-proxy  // node 转发API请求，解决跨域问题
+│   └── index.js
 ├── package.json
 ├── src
 │   ├── App.vue
@@ -111,5 +125,6 @@ dev: {
 关于有人在问，项目执行`npm run build`打包之后，豆瓣 API 代理配置不起作用，无法访问豆瓣API的问题。
 上述的代理配置只能在开发模式下使用，是webpack-dev-server提供的`http-proxy-middleware`。
 正式打包后如要访问豆瓣 API，需要自行搭建后端，转发 API，解决跨域问题。
+
 # 关于vuex
 如果你想了解vuex的用法，可以切换到`vuex`分支，在该分支下，所有的state都采用vuex来管理。
