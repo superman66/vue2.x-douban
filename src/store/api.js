@@ -4,7 +4,7 @@
 import axios from 'axios';
 
 // 使用代理
-const HOST = '/api/';
+const HOST = 'http://localhost:8081';
 
 export const API_TYPE = {
   movie:{
@@ -29,11 +29,11 @@ export function fetchItemByType(type) {
 
 
 export function fetchMoviesByType(type, start=0, count=20) {
-  return fetchItemByType(`movie/${type}?start=${start}&count=${count}`)
+  return fetchItemByType(`/movie/${type}?start=${start}&count=${count}`)
 }
 
 export function fetchMovieById(id) {
-  return fetch(`movie/subject/${id}`);
+  return fetch(`/movie/subject/${id}`);
 }
 
 export function fetchSearchMovies(query, start=0) {
