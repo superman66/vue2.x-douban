@@ -1,5 +1,5 @@
-# ChANGE LOG
-* 新增 Node.js 服务转发API请求-2017-3-15
+# Change Log
+* 2017-3-15 新增 node 服务转发API请求
 
 # 运行项目
 clone项目到本地，进入项目文件夹，安装依赖
@@ -122,9 +122,9 @@ dev: {
 
 **说明**
 <br>
-关于有人在问，项目执行`npm run build`打包之后，豆瓣 API 代理配置不起作用，无法访问豆瓣API的问题。
-上述的代理配置只能在开发模式下使用，是webpack-dev-server提供的`http-proxy-middleware`。
-正式打包后如要访问豆瓣 API，需要自行搭建后端，转发 API，解决跨域问题。
 
+## Node.js 转发API请求
+由于有同学在问，项目执行`npm run build`打包之后，豆瓣 API 代理配置不起作用，无法访问豆瓣API的问题。
+所以新增了Node.js http服务，用于转发API请求，解决跨域问题。具体见`node-proxy/index.js`
 # 关于vuex
 如果你想了解vuex的用法，可以切换到`vuex`分支，在该分支下，所有的state都采用vuex来管理。
