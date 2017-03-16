@@ -162,6 +162,7 @@ app.get('/movie/search', function (req, res) {
 
 **CORS设置**
 >跨源资源共享 ( [CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS) )机制让Web应用服务器能支持跨站访问控制，从而使得安全地进行跨站数据传输成为可能。
+
 主要是通过设置`Access-Control-Allow-Origin: *`
 ```javascript
 app.all('*', function (req, res, next) {
@@ -181,8 +182,12 @@ app.listen(8081, function () {
   console.log('HTTP Server is running in http://127.0.0.1:8081')
 })
 ```
+**启动**
 
-
+```
+cd node-proxy
+node index.js
+```
 具体见`node-proxy/index.js`
 # 关于vuex
 如果你想了解vuex的用法，可以切换到`vuex`分支，在该分支下，所有的state都采用vuex来管理。
