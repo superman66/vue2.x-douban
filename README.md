@@ -122,8 +122,6 @@ dev: {
 在`proxyTable`这个属性中，配置target属性为我们要代理的目标地址。这里我们写成`http://api.douban.com/v2`，这样我们就可以在应用中调用`/api/movie/in_theaters`来访问`http://api.douban.com/v2/movie/in_theaters`，从而解决跨域的问题。
 >关于vue-cli更多关于跨域的设置可以看[官网文档](http://vuejs-templates.github.io/webpack/)
 
-**说明**
-<br>
 
 ## Node.js 转发API请求
 由于有同学在问，项目执行`npm run build`打包之后，豆瓣 API 代理配置不起作用，无法访问豆瓣API的问题。
@@ -181,9 +179,9 @@ app.all('*', function (req, res, next) {
 ```
 **端口监听**
 ```javascript
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
+app.listen(8081, function () {
+  console.log('HTTP Server is running in http://127.0.0.1:8081')
+})
 ```
 **启动**
 
