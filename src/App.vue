@@ -8,8 +8,6 @@
 <script>
   import vHeader from './components/header.vue'
   import Hello from './components/Hello';
-  import Index from './views/index'
-  import VuexDemo from './views/vuex-demo.vue'
   import Movies from './views/movie/movies.vue'
   import MovieList from './views/movie/movie-list.vue'
   import MovieDetail from './views/movie/movie-detail.vue'
@@ -20,8 +18,6 @@
     components: {
       vHeader,
       Hello,
-      Index,
-      VuexDemo,
       Movies,
       MovieList,
       MovieDetail,

@@ -14,7 +14,6 @@
         </div>
       </router-link>
     </div>
-    <p v-if="isScroll" class="text-center">loading....</p>
     <spinner :show="loading"></spinner>
   </section>
 </template>
