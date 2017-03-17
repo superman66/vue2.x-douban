@@ -1,6 +1,6 @@
 # Change Log
-* 2017-3-15: 新增 node 服务转发API请求
-
+* 2017-3-15：新增 node 服务转发api请求
+* 2017-3-17：增加在线访问地址，node服务转发api请求部署到 heroku
 # 运行项目
 clone项目到本地，进入项目文件夹，安装依赖
 ```javascript
@@ -24,6 +24,8 @@ node index.js
 最后打开浏览器，输入`localhost:8880`即可访问。效果图如下：
 
 ![text](../master/static/vue-douban-shrink.gif)
+
+**戳我查看[demo](http://www.iamsuperman.cn/vue2.x-douban/dist/#/)**
 # 路由
 应用包括下面4个路由
 * `/movies` 首页，包含正在上映榜单和即将上映榜单的电影信息，首页只显示各个榜单的前8条数据；
