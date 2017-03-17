@@ -1,6 +1,6 @@
 # Change Log
-* 2017-3-15：新增 node 服务转发api请求
-* 2017-3-17：增加在线访问地址，node服务转发api请求部署到 heroku
+* 2017-3-15：新增 node 服务转发 api 请求
+* 2017-3-17：增加在线[访问地址](http://www.iamsuperman.cn/vue2.x-douban/dist/#/)，node 服务转发 api 请求部署到 heroku
 # 运行项目
 clone项目到本地，进入项目文件夹，安装依赖
 ```javascript
@@ -25,7 +25,7 @@ node index.js
 
 ![text](../master/static/vue-douban-shrink.gif)
 
-**戳我查看[demo](http://www.iamsuperman.cn/vue2.x-douban/dist/#/)**
+**戳我查看 [demo](http://www.iamsuperman.cn/vue2.x-douban/dist/#/)(由于heroku在国外，访问速度比较慢，可能还需要翻墙)**
 # 路由
 应用包括下面4个路由
 * `/movies` 首页，包含正在上映榜单和即将上映榜单的电影信息，首页只显示各个榜单的前8条数据；
@@ -134,6 +134,7 @@ Node.js转发用到了 `express`和`superagent`. [superanget](https://github.com
 ```
 npm i express superagent -S
 ```
+
 **定义接口**
 根据前端所需，定义了如下三个接口：
 ```javascript
@@ -180,9 +181,9 @@ app.all('*', function (req, res, next) {
 ```
 **端口监听**
 ```javascript
-app.listen(8081, function () {
-  console.log('HTTP Server is running in http://127.0.0.1:8081')
-})
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
 ```
 **启动**
 
@@ -192,6 +193,6 @@ node index.js
 ```
 具体见`node-proxy/index.js`
 
-**更多戳[node-proxy-api](https://github.com/superman66/node-proxy-api)**
+**更多关于 Node.js 转发 api 请求，请戳完整项目：[node-proxy-api](https://github.com/superman66/node-proxy-api)**
 # 关于vuex
 如果你想了解vuex的用法，可以切换到`vuex`分支，在该分支下，所有的state都采用vuex来管理。
