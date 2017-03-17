@@ -12,7 +12,7 @@ npm install
 ```javascript
 npm run dev
 ```
-接着运行node 转发请求服务
+接着运行 node,启动服务
 ```javascript
 cd node-proxy
 node index.js
@@ -25,7 +25,9 @@ node index.js
 
 ![text](../master/static/vue-douban-shrink.gif)
 
-**戳我查看 [demo](http://www.iamsuperman.cn/vue2.x-douban/dist/#/)(由于heroku在国外，访问速度比较慢，可能还需要翻墙)**
+**戳我查看 [demo](http://www.iamsuperman.cn/vue2.x-douban/dist/#/)**
+
+注意：由于heroku在国外，而且我用的是免费版，当长时间没有连接的话，node服务会被休眠。如果处于休眠状态下，用户访问速度会比较慢，还有可能出现接口请求出现错误。遇到这种情况，刷新重试即可。
 # 路由
 应用包括下面4个路由
 * `/movies` 首页，包含正在上映榜单和即将上映榜单的电影信息，首页只显示各个榜单的前8条数据；
