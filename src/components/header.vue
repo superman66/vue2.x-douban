@@ -16,7 +16,6 @@
       <img src="../assets/search-btn.png" class="search-btn" @click="search()"/>
     </div>
   </div>
-  >
 </template>
 <script>
   export default{
