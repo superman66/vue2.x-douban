@@ -12,7 +12,7 @@ npm install
 ```javascript
 npm run dev
 ```
-接着运行 node,启动服务
+接着运行 node,启动服务， **注意：这一步的 node 转发服务一定要启动，要不然无法正常访问豆瓣 API**
 ```javascript
 cd node-proxy
 node index.js
