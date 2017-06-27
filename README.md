@@ -25,7 +25,7 @@ node index.js
 
 ![text](../master/static/vue-douban-shrink.gif)
 
-**戳我查看 [demo](http://www.iamsuperman.cn/vue2.x-douban/dist/#/)**
+**戳我查看 [demo](http://chenhuichao.com/vue2.x-douban/dist/#/)**
 
 注意：由于heroku在国外，而且我用的是免费版，当长时间没有连接的话，node服务会被休眠。如果处于休眠状态下，用户访问速度会比较慢，还有可能出现接口请求出现错误。遇到这种情况，刷新重试即可。
 # 路由
