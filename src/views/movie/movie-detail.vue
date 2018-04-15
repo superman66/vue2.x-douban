@@ -8,7 +8,7 @@
       <section class="subject-info">{{getMeta}}</section>
       <section class="subject-mark">
         <div class="mark-item">
-          <a >
+          <a>
             <span>想看({{movie.wish_count}})</span>
           </a>
           <a><span>看过</span></a>
@@ -48,7 +48,7 @@
         return this.movie.countries.join(' / ') + ' / '+this.movie.genres.join(' / ') + ' / '+this.movie.directors[0].name +'(导演) / ' + cast;
       },
       getOriginalTitle(){
-        return new RegExp(/([A-Za-z])/g).test(this.movie.original_title)? this.movie.original_title : '';
+        return /([A-Za-z])/g.test(this.movie.original_title)? this.movie.original_title : '';
       },
     },
     mounted(){
@@ -78,6 +78,7 @@
         font-size: 15px;
         color: #494949;
         line-height: 1.5;
+        text-align: justify;
       }
     }
     .subject-info {
